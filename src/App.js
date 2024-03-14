@@ -1,4 +1,3 @@
-import React from "react"
 import ReactDOM from "react-dom/client"
 import { createBrowserRouter, Outlet, RouterProvider } from "react-router-dom"
 
@@ -8,6 +7,7 @@ import About from "./components/About"
 import Error from './components/Error'
 import Contact from './components/contact'
 import RestaurantMenu from './components/RestaurantMenu'
+import CartContext from "./utils/CartContext"
 
 
 
@@ -16,10 +16,14 @@ const root = ReactDOM.createRoot(document.getElementById("root"))
 
 const Main = () => {
     return (
-        <div className="fullbody">
-            <Header />
-            <Outlet />
-        </div>
+        
+        <CartContext.Provider value={{dark: false}} >
+            <div className="bg-[#232323] text-white">
+                <Header />
+                <Outlet />
+                
+            </div>
+        </CartContext.Provider>
 
     )
 }

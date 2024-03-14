@@ -14,7 +14,7 @@ const useMenuItems = (resId) => {
     const fetchMenu = async () => {
         const response = await fetch(MENU_URL + resId)
         const json = await response.json()
-        const data = json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards
+        const data = json?.data?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((element)=>element?.card?.card?.["@type"]?.includes("ItemCategory"))
         if(data)
             setMenuItems(data)
         setFullData(json)

@@ -1,16 +1,31 @@
-import React from 'react'
-import { MENU_IMG_URL } from '../utils/constants'
+import { MENU_IMG_URL } from "../utils/constants"
 
-const MenuItem = ({name, price, imgUrl}) => {
-  return (
-    <div className="restaurant-card">
-            <img className="restaurant-image" src={MENU_IMG_URL + imgUrl} 
-                alt={name}/>
-            <div className="restaurant-card-details">
+const MenuItem = ({title, items, activeIndex, currentIndex, onclick}) => {
+    // const [showDetails, setDetails] = useState(false)
+    const divClassName = "bg-white text-black p-2 flex justify-between mt-2 shadow-md cursor-pointer"
 
-                <h4>{name} </h4>
-                <h5>Rs. {price}</h5>
+    return (activeIndex !== currentIndex ) ? <div onClick={() => onclick(currentIndex, activeIndex)} className={divClassName}><h5>{title}</h5><h5>➡️</h5></div> : (
+        <div className="">
+            <div onClick={() => onclick(currentIndex, activeIndex)} className={divClassName}>
+                <h5>{title}</h5>
+                <h5>➡️</h5>
             </div>
+            <div className="p-2">
+                    {
+                        items?.map((element) => {
+                            return (
+                                <div key={element.card.info.name} className=" p-6 flex justify-between m-10 shadow-lg bg-[#454545] rounded-lg">
+                                    <div>
+                                        <p>{element.card.info.name}</p>
+                                        <p>₹ {element.card.info.price/100 || element.card.info.defaultPrice/100}</p>
+                                    </div>
+                                    <img className="h-20 rounded-lg " src={MENU_IMG_URL + element.card.info.imageId} />
+                                </div>
+                            )
+                        })
+                    }
+            </div>
+            
         </div>
   )
 }

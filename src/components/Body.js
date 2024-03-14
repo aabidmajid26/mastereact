@@ -10,17 +10,20 @@ const Body = () => {
 
     const EnhancedRestaurant = RestaurantEnhanced(Restaurant)  // higher order component
     const restaurants = useFetchAllRestaurants(searchQuery)    // custom hook
+    console.log(restaurants, 'restaurants')
 
     return (
-        <div className="body">
-            <div className="searchbox">
-                <input className="searchinput" id="searchbox" type="text" onKeyUp={(e) => setSearchQuery(e.target.value)} placeholder="Search your favourite restaurants..." />
+        <div className="h-auto bg-[#303030] p-3 text-white">
+            <div className="m-7 flex justify-center h-auto">
+                <input className="w-[23rem] p-3 rounded-xl font-mono hover:shadow-2xl focus:shadow-2xl" id="searchbox" type="text" onKeyUp={(e) => setSearchQuery(e.target.value)} placeholder="Search your favourite restaurants..." />
             </div>
-            <div className="restaurants">
+            <hr />
+            <div className="flex flex-wrap justify-center shadow-2xl mb-10 h-auto">
                 {
                     restaurants.map((element) => {
-                        return element.info.name.includes(".") ? (<Link key={element.info.id} to={"/restaurants/" + element.info.id}><EnhancedRestaurant  resData={element} /></Link>) :  (
-                            <Link key={element.info.id} to={"/restaurants/" + element.info.id}><Restaurant resData={element} /></Link> 
+                    {/* return element.info.name.includes(".") ? (<Link key={element.info.id} to={"/restaurants/" + element.info.id}><EnhancedRestaurant  resData={element} /></Link>) :  (*/} 
+                            return (
+                            <Link className="m-10 h-auto" key={element.info.id} to={"/restaurants/" + element.info.id}><Restaurant resData={element} /></Link> 
                         )
                     })
                 }

@@ -5,15 +5,15 @@ const Restaurant = ({ resData }) => {
     const { name, locality, avgRating, costForTwo, cloudinaryImageId } = resData?.info;
     
     return (
-        <div className="restaurant-card">
-            <img className="restaurant-image" src={CDN_URL + cloudinaryImageId} 
+        <div className="w-72 h-[100%] rounded-lg bg-[#404040] text-slate-200 shadow-2xl hover:shadow-[#101010] p-0 overflow-hidden">
+            <img className=" w-72 h-40 rounded-t-lg pt-0" src={CDN_URL + cloudinaryImageId} 
                 alt={name}/>
-            <div className="restaurant-card-details">
+            <div className="p-2">
 
-                <h2>{name} </h2>
-                <h5>{locality}</h5>
-                <h5>{avgRating + " out of 5"}</h5>
-                <h5>{costForTwo}</h5>
+                <p className="pl-0 font-bold">{name} </p>
+                <p className="pl-0">{locality}</p>
+                <p className="pl-0 ">{avgRating + " out of 5"}</p>
+                <p className="pl-0 font-semibold">{costForTwo}</p>
             </div>
         </div>
     )
