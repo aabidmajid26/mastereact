@@ -12,19 +12,19 @@ const RestaurantMenu = () => {
 
     const [menuItems, fullData] = useMenuItems(resId)
     return (fullData === null) ? <div>Hello</div> : (
-        <div className="pb-20">
+        <div className="pb-20 w-[max]">
             <div className="w-[max] flex justify-between p-5 bg-[#454545] m-2 items-center font-bold rounded-md">
                 <div>
                     <p className="text-[5rem]">
-                        {fullData.data.cards[0].card.card.info.name}
+                        {fullData.data.cards[0].card.card?.info?.name}
                     </p>
                     <p>
-                        {fullData.data.cards[0].card.card.info.locality}
+                        {fullData.data.cards[0].card.card?.info?.locality}
                     </p>
                 </div>
-                <img className="w-[12rem] rounded-md" src={CDN_URL + fullData.data.cards[0].card.card.info.cloudinaryImageId}  />
+                <img className="w-[12rem] rounded-md" src={CDN_URL + fullData?.data?.cards[0].card?.card?.info?.cloudinaryImageId}  />
             </div>
-            <div className="m-2">
+            <div className="w-[50%] m-auto mt-10">
                 <ul>
                     {
                         menuItems?.map((element, index) => (

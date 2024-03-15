@@ -15,10 +15,8 @@ const useFetchAllRestaurants = (searchQuery) => {
     const fetchData = async (searchQuery) => {
         const response = await fetch(ALL_RESTAURANTS_URL)
         const json = await response.json()
-        console.log(json, 'json data')
         var cards = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
         cards = cards || json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
-        console.log(cards, 'card data')
         if(!searchQuery){
             setRestaurants(cards)
             return

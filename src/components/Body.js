@@ -10,7 +10,6 @@ const Body = () => {
 
     const EnhancedRestaurant = RestaurantEnhanced(Restaurant)  // higher order component
     const restaurants = useFetchAllRestaurants(searchQuery)    // custom hook
-    console.log(restaurants, 'restaurants')
 
     return (
         <div className="h-auto bg-[#303030] p-3 text-white">

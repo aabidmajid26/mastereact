@@ -1,10 +1,15 @@
+
+
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 import { SVG_D } from "../utils/constants";
 import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
 
     const isOnline = useOnlineStatus();
+    const cartItems = useSelector((state) => state.cart.items)
 
     
     return (
@@ -18,7 +23,7 @@ const Header = () => {
                     <li className=" text-sm  px-8  "><Link to="/">Home </Link></li>
                     <li className=" text-sm  px-8  "><Link to="/about">About Us</Link></li>
                     <li className=" text-sm  px-8  "><Link to="/contact">Contact Us</Link></li>
-                    <li className=" text-sm  px-8  ">Cart</li>
+                    <li className=" text-sm  px-8  "><Link to="/cart"> Cart - <strong>({cartItems.length + " items"})</strong> </Link></li>
                 </ul>
             </div>
         </div>
